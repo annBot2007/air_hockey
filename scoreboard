@@ -1,0 +1,31 @@
+from turtle import Turtle
+
+class Scoreboard(Turtle):
+    def __init__(self):
+        super().__init__()
+        self.hideturtle()
+        self.color("white")
+        self.penup()
+        self.l_score = 0
+        self.r_score = 0
+
+    def update_scoreboard(self):
+        self.clear()
+        self.goto(-100, 180)
+        self.write(f"{self.l_score}", align="center", font=("Courier", 80, "normal"))
+        self.goto(100, 180)
+        self.write(f"{self.r_score}", align="center", font=("Courier", 80, "normal"))
+
+    def l_point(self):
+        self.l_score += 1
+
+    def r_point(self):
+         self.r_score += 1
+
+    def winning_sequence(self):
+        self.goto(0, 0)
+        self.color("white")
+        if self.l_score == 5:
+            self.write(f"GAME OVER. LEFT SIDE WINS", align="center", font=("Courier", 20, "normal"))
+        elif self.r_score == 5:
+            self.write(f"GAME OVER. RIGHT SIDE WINS", align="center", font=("Courier", 20, "normal"))
